@@ -16,9 +16,12 @@ macro_rules! impl_atomic {
 pub struct Address(pub Bytes20);
 #[derive(Default, Copy, Clone, PartialEq, Eq, Hash, Debug)]
 pub struct U256(pub Bytes32);
+#[derive(Default, Copy, Clone, PartialEq, Eq, Hash, Debug)]
+pub struct U8(pub Bytes1);
 
 impl_atomic!(Address, "address", self { self.0.encode_data() });
 impl_atomic!(U256, "uint256", self { self.0.encode_data() });
+impl_atomic!(U8, "uint8", self { self.0.encode_data() });
 
 macro_rules! impl_bytes {
     ($($T:ident: $size:expr => $name:expr,)+) => {
